@@ -659,7 +659,7 @@ void PdfConverterPrivate::endPage(PageObject & object, bool hasHeaderFooter, int
         printer->setPageMargins(leftMargin, 0, rightMargin, 0, settings.margin.left.second);
 		painter->translate(0, -spacing);
 		QWebPrinter wp(header->mainFrame(), printer, *painter);
-		painter->translate(0,-wp.elementLocation(header->mainFrame()->findFirstElement("body")).second.height());
+		painter->translate(0,-topMargin* printer->height() / printer->heightMM());
 		QVector<p_t> local;
 		QVector<p_t> external;
 		QHash<QString, QWebElement> anchors;
